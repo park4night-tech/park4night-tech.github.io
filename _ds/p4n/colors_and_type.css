@@ -1,0 +1,273 @@
+/* ============================================================
+   park4night — Colors & Type foundations
+   ============================================================ */
+
+/* Webfonts — Circular Std (Lineto, brand font) ------------ */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Book.woff2') format('woff2'),
+       url('fonts/CircularStd-Book.woff')  format('woff');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-BookItalic.woff2') format('woff2'),
+       url('fonts/CircularStd-BookItalic.woff')  format('woff');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Medium.woff2') format('woff2'),
+       url('fonts/CircularStd-Medium.woff')  format('woff');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-MediumItalic.woff2') format('woff2'),
+       url('fonts/CircularStd-MediumItalic.woff')  format('woff');
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Bold.woff2') format('woff2'),
+       url('fonts/CircularStd-Bold.woff')  format('woff');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-BoldItalic.woff2') format('woff2'),
+       url('fonts/CircularStd-BoldItalic.woff')  format('woff');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-Black.woff2') format('woff2'),
+       url('fonts/CircularStd-Black.woff')  format('woff');
+  font-weight: 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Circular Std';
+  src: url('fonts/CircularStd-BlackItalic.woff2') format('woff2'),
+       url('fonts/CircularStd-BlackItalic.woff')  format('woff');
+  font-weight: 900; font-style: italic; font-display: swap;
+}
+
+:root {
+  /* ── Brand colors ───────────────────────────────────────── */
+  /* Pulled directly from logo SVG gradient stops */
+  --p4n-blue:          #165DD7;   /* Primary brand blue */
+  --p4n-green:         #27D9A1;   /* Primary brand mint/green */
+  --p4n-gradient:      linear-gradient(135deg, #165DD7 0%, #27D9A1 100%);
+  --p4n-gradient-soft: linear-gradient(135deg, #165DD7 0%, #27D9A1 100%);
+
+  /* Blue scale (from the brand blue) */
+  --blue-50:  #EAF0FC;
+  --blue-100: #C8D7F5;
+  --blue-200: #8EA9EB;
+  --blue-300: #547BE0;
+  --blue-400: #2E6CDC;
+  --blue-500: #165DD7;   /* = brand blue */
+  --blue-600: #1150B8;
+  --blue-700: #0C3F90;
+  --blue-800: #082D68;
+
+  /* Green / mint scale */
+  --green-50:  #E4FBF3;
+  --green-100: #BCF4DF;
+  --green-200: #8AECC7;
+  --green-300: #58E4AE;
+  --green-400: #27D9A1;   /* = brand green */
+  --green-500: #1FB888;
+  --green-600: #19946D;
+  --green-700: #126F52;
+
+  /* Neutral (cool slate-navy — matches body text in specimens) */
+  --ink-900: #0F1B3D;    /* Headlines / near-black navy */
+  --ink-800: #1E2C55;
+  --ink-700: #2E3B66;    /* Body */
+  --ink-600: #4A5578;
+  --ink-500: #6B7595;
+  --ink-400: #97A0B8;
+  --ink-300: #C2C8D7;
+  --ink-200: #E1E5EE;
+  --ink-100: #F1F3F8;
+  --ink-50:  #F8F9FC;
+  --white:   #FFFFFF;
+
+  /* Semantic ---------------------------------------------- */
+  --fg-1: var(--ink-900);        /* Primary text */
+  --fg-2: var(--ink-700);        /* Secondary text */
+  --fg-3: var(--ink-500);        /* Tertiary / meta text */
+  --fg-inverse: var(--white);
+
+  --bg-1: var(--white);          /* Page */
+  --bg-2: var(--ink-50);         /* Subtle surface */
+  --bg-3: var(--ink-100);        /* Raised surface */
+
+  --border-1: var(--ink-200);
+  --border-2: var(--ink-300);
+
+  --accent:          var(--p4n-blue);
+  --accent-hover:    var(--blue-600);
+  --accent-soft:     var(--blue-50);
+  --accent-success:  var(--green-400);
+
+  /* Status */
+  --success: #27D9A1;
+  --warning: #F5B03E;
+  --danger:  #E5484D;
+  --info:    #165DD7;
+
+  /* ── Elevation / radii / spacing ───────────────────────── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(15, 27, 61, 0.06);
+  --shadow-sm: 0 2px 6px rgba(15, 27, 61, 0.08);
+  --shadow-md: 0 8px 24px rgba(15, 27, 61, 0.10);
+  --shadow-lg: 0 20px 48px rgba(15, 27, 61, 0.14);
+  --shadow-card: 0 10px 30px rgba(22, 93, 215, 0.10);
+
+  /* Spacing scale (4px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ── Type ──────────────────────────────────────────────── */
+  --font-display: 'Circular Std', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-body:    'Circular Std', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Circular Std ships: Book 400, Medium 500, Bold 700, Black 900 */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 500;   /* alias — maps to Medium */
+  --fw-bold: 700;
+  --fw-extrabold: 700;  /* alias — maps to Bold (no 800 weight in Circular) */
+  --fw-black: 900;
+
+  /* Type scale — deck + app are headline-heavy, tight leading */
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-md:   18px;
+  --text-lg:   20px;
+  --text-xl:   24px;
+  --text-2xl:  32px;
+  --text-3xl:  40px;
+  --text-4xl:  56px;
+  --text-5xl:  72px;
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.65;
+
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+}
+
+/* Base -------------------------------------------------------- */
+html, body {
+  font-family: var(--font-body);
+  color: var(--fg-1);
+  background: var(--bg-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+  font-weight: var(--fw-regular);
+}
+
+/* Semantic element styles ------------------------------------ */
+.h1, h1 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--text-4xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+.h2, h2 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extrabold);
+  font-size: var(--text-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg-1);
+  margin: 0;
+}
+.h3, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-2xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+.h4, h4 {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-xl);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+  margin: 0;
+}
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--p4n-blue);
+}
+.p, p {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  margin: 0;
+}
+.small, small {
+  font-size: var(--text-sm);
+  color: var(--fg-3);
+}
+.code, code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--ink-100);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-xs);
+  color: var(--ink-900);
+}
+
+/* Brand gradient text utility */
+.text-gradient {
+  background: var(--p4n-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Signature dashed divider — used in slides under section titles */
+.dashed-accent {
+  display: inline-block;
+  width: 96px;
+  border-bottom: 3px dashed var(--green-400);
+}

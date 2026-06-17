@@ -45,14 +45,70 @@ html[data-lang="en"] .lang-switch button[data-set="en"] { background: var(--p4n-
 .back-link { transition: background .15s ease; }
 .back-link:hover { background: var(--accent-soft); }
 
-/* Responsive : empile les grilles deux colonnes sur petit écran */
-@media (max-width: 860px) {
+/* ============================================================
+   Responsive
+   Les styles du site sont en grande partie inline (valeurs desktop) ;
+   on les surcharge ici, d'où les !important nécessaires.
+   ============================================================ */
+
+/* ---- Tablette : on empile les grilles deux colonnes ---- */
+@media (max-width: 900px) {
   .grid-2 { grid-template-columns: 1fr !important; gap: 40px !important; }
+  /* Cellules grid : autoriser le rétrécissement sous la taille du contenu
+     (sinon une cellule garde min-width:auto et déborde le viewport) */
+  .grid-2 > * { min-width: 0 !important; }
   .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
-  .facts { grid-template-columns: repeat(2, 1fr) !important; }
+  .facts  { grid-template-columns: repeat(2, 1fr) !important; }
   .facts > div { border-left: none !important; }
   .nav-links { display: none !important; }
+
+  /* Le hero ne doit plus imposer une pleine hauteur d'écran (vide géant) */
+  .hero-grid {
+    min-height: 0 !important;
+    padding: 40px 0 !important;
+  }
+  /* La photo du hero retrouve une hauteur raisonnable une fois empilée */
+  .hero-grid > div:last-child { height: 300px !important; }
 }
-@media (max-width: 520px) {
+
+/* ---- Mobile : densité, tailles de texte, débordements ---- */
+@media (max-width: 600px) {
+  /* Garde-fou anti-débordement horizontal global */
+  html, body { overflow-x: hidden !important; max-width: 100% !important; }
+
   .grid-4 { grid-template-columns: 1fr !important; }
+
+  /* Le mockup téléphone (width:280px fixe) doit pouvoir rétrécir */
+  section [style*="width:280px"] { width: 100% !important; max-width: 280px !important; }
+
+  /* Padding horizontal réduit (28px -> 20px) sur les conteneurs */
+  header nav,
+  section > div,
+  footer > div { padding-left: 20px !important; padding-right: 20px !important; }
+
+  /* Padding vertical des sections divisé (104/96px -> 64px) */
+  section > div[style*="104px 28px"],
+  section > div[style*="96px 28px"] { padding-top: 64px !important; padding-bottom: 64px !important; }
+
+  /* Nav : on masque le bouton Contact (qui débordait) + on resserre */
+  header nav { gap: 12px !important; }
+  header .btn-contact { display: none !important; }
+
+  /* Titres : on borne les clamp() trop gros pour 360-390px */
+  h1 { font-size: 34px !important; line-height: 1.12 !important; }
+  h2 { font-size: 27px !important; line-height: 1.15 !important; }
+
+  /* Les max-width en ch débordaient : on laisse le texte prendre la largeur */
+  p { max-width: 100% !important; }
+  h1 { max-width: 100% !important; }
+
+  /* CTA et badges stores : pleine largeur, plus de coupe hors écran */
+  .btn-primary, .btn-ghost, .btn-ghost-light { width: 100% !important; text-align: center !important; justify-content: center !important; }
+  .store-badge { flex: 1 1 100% !important; justify-content: center !important; }
+
+  /* Mockup téléphone : tient dans l'écran */
+  section img[alt="park4night"] { max-width: 100%; }
+
+  /* Footer : empile les 4 colonnes proprement */
+  footer .grid-4 { grid-template-columns: 1fr !important; gap: 32px !important; }
 }

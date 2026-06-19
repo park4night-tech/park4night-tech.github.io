@@ -45,6 +45,15 @@ html[data-lang="en"] .lang-switch button[data-set="en"] { background: var(--p4n-
 .back-link { transition: background .15s ease; }
 .back-link:hover { background: var(--accent-soft); }
 
+/* Section équipe : crossfade photo posée -> photo fun au survol */
+.team-photo { position: relative; cursor: pointer; }
+.team-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: opacity .55s cubic-bezier(0.2,0.8,0.2,1), transform .7s cubic-bezier(0.2,0.8,0.2,1); backface-visibility: hidden; }
+.team-photo .ph-fun { opacity: 0; transform: scale(1.08); }
+.team-photo:hover .ph-base { opacity: 0; transform: scale(1.04); }
+.team-photo:hover .ph-fun { opacity: 1; transform: scale(1); }
+.team-photo .ph-tag { position: absolute; top: 16px; right: 16px; z-index: 3; display: flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.92); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); box-shadow: var(--shadow-md); font-family: var(--font-display); font-weight: 700; font-size: 13px; color: var(--p4n-blue); opacity: 1; transform: translateY(0); transition: opacity .4s ease, transform .4s ease; pointer-events: none; }
+.team-photo:hover .ph-tag { opacity: 0; transform: translateY(-6px); }
+
 /* ============================================================
    Responsive
    Les styles du site sont en grande partie inline (valeurs desktop) ;
